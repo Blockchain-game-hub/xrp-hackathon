@@ -1,0 +1,102 @@
+<template name="signup">
+  {{> sAlert}}
+  <div class="main-container">
+    <section class="space-sm">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col text-center">
+            <img alt="Image" src="/images/logo-black.png" width="150px" />
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+        <div class="row flex-md-row card card-lg">
+          <div class="col-12 col-md-7 card-body bg-secondary">
+            <div class="text-center mb-5">
+              <h1 class="h2">Create a digital will on XRP</h1>
+              <span>
+                Create an EstateUp account to securely preserve and share your digital will.
+              </span>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-9">
+                <form class="signup">
+                  <div class="form-row form-group">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input class="form-control form-control-lg" type="email" name="email" id="email" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control form-control-lg" type="password" name="password" id="password"
+                          required />
+                      </div>
+                      <div class="form-row form-group mt-2">
+                        <div class="col">
+                          <button class="btn btn-block btn-success btn-lg create-btn" type="submit">Create Account</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="text-center mt-6">
+                  <span class="text-small text-muted">By using EstateUp you agree to our <a href="#">Terms</a> and <a
+                      href="#">Privacy Policy</a>.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end of col-->
+          <div class="col-12 col-md-5 card-body">
+            <div>
+              <div class="mb-3 text-center">
+                <h3 class="h2 mb-2">How EstateUp Works</h3>
+              </div>
+              <ul class="list-unstyled list-spacing-sm mb-5 ">
+                <li class="row">
+                  <div class="col-2 col-md-1"><i class="icon-minus h5 text-muted"></i>
+                  </div>
+                  <div class="col-10">
+                    Create an EstateUp account - when you do this, we'll create a XRP wallet for you
+                  </div>
+                </li>
+                <li class="row">
+                  <div class="col-2 col-md-1"><i class="icon-minus h5 text-muted"></i>
+                  </div>
+                  <div class="col-10">
+                    Deposit some funds into your XRP wallet. For this Hackathon, EstateUp will let you use ours.
+                  </div>
+                </li>
+                <li class="row align-items-center">
+                  <div class="col-2 col-md-1"><i class="icon-minus h5 text-muted"></i>
+                  </div>
+                  <div class="col-10">
+                    Upload your digital will and share it to four beneficiaries.
+                  </div>
+                </li>
+                <li class="row">
+                  <div class="col-2 col-md-1"><i class="icon-minus h5 text-muted"></i>
+                  </div>
+                  <div class="col-10">
+                    When it's time to access your digital will, at least two of the beneficiaries are needed to execute the contract.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+        <div class="text-center">
+          <span class="text-small">Already have an account? <a href="{{pathFor 'login'}}">Login here.</a>
+          </span>
+        </div>
+      </div>
+      <!--end of container-->
+    </section>
+    <!--end of section-->
+  </div>
+
+</template>

@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "app_function": "shamir.app",
+        "aws_region": "us-east-1",
+        "profile_name": "personal",
+        "project_name": "python-shamirs",
+        "runtime": "python3.7",
+        "s3_bucket": "zappa-shamirssddfsd83"
+    }
+}

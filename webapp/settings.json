@@ -1,0 +1,8 @@
+{
+  "XRP": {
+    "ADDRESS": "rK9QG9fKrLtgbs2UbrXXcGmRbzrGncm9zM",
+    "SECRET": "shrdsEc41BFPxRr2EmVvvChTjCdLU",
+    "SEQUENCE": 21611684
+  },
+  "SHAMIR_API": "https://8uq33b87x2.execute-api.us-east-1.amazonaws.com/dev"
+}

@@ -1,0 +1,172 @@
+<template name="dashboard">
+  {{> sAlert}}
+  {{> navbar}}
+  <div class="main-container">
+    <section class="bg-white space-sm pb-4">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-auto">
+            <h1 class="h2">Welcome, {{getEmail}}</h1>
+          </div>
+          <!--end of col-->
+          {{#if isRecoveryUser}}
+          <div class="col-auto text-right">
+            <a href="{{pathFor 'recovery'}}" class="btn btn-lg btn-success">
+              Recover Will
+            </a>
+          </div>
+          <!--end of col-->
+          {{/if}}
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+    <!--end of section-->
+    {{#unless user.profile.hasWallet}}
+    <section class="height-70">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-5">
+            <div class="card card-lg text-center">
+              <div class="card-body">
+                <i class="icon-add-to-list display-4 opacity-20"></i>
+                <h1 class="h5">Creating your XRP wallet</h1>
+                <p>
+                  In order to use EstateUp, you need to create or add your XRP wallet. This will allow you to
+                  securely share your digital will.
+                </p>
+                <a href="#" class="btn btn-lg btn-primary mb-2">Generating...</a>
+              </div>
+            </div>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+    {{else}}
+    {{#unless hasReferrals}}
+    <section class="flush-with-above height-80 d-block">
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="general" role="tabpanel">
+          <div class="container">
+            <div class="row mb-4">
+              <div class="col">
+                <h5>Create your own digital will. Invite your trusted members</h5>
+                <span>
+                  Enter the emails of four trusted members. These can be your family or friends.
+                </span>
+              </div>
+              <!--end of col-->
+            </div>
+            <!--end of row-->
+            <div class="row">
+              <div class="col-12 col-md-4 order-md-2">
+                <div class="alert alert-info text-small" role="alert">
+                  <i class="icon-shield"></i>
+                  <span>
+                    These users must sign up to EstateUp before you can create your digital will.
+                  </span>
+                </div>
+                {{> walletCard}}
+              </div>
+              <!--end of col-->
+              <div class="col-12 col-md-8 order-md-1">
+                <form class="row trusted-members">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="email1">Beneficiary One:
+                        <span class="text-red">*</span>
+                      </label>
+                      <input class="form-control form-control-lg" type="email" name="email1" id="email1" required />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="email2">Beneficiary Two:
+                        <span class="text-red">*</span>
+                      </label>
+                      <input class="form-control form-control-lg" type="email" name="email2" id="email2" required />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="email3">Beneficiary Three:
+                        <span class="text-red">*</span>
+                      </label>
+                      <input class="form-control form-control-lg" type="email" name="email3" id="email3" required />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="email4">Beneficiary Four:
+                        <span class="text-red">*</span>
+                      </label>
+                      <input class="form-control form-control-lg" type="email" name="email4" id="email4" required />
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <button class="btn btn-primary btn-lg" type="submit">Save changes</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!--end of col-->
+            </div>
+            <!--end of row-->
+          </div>
+        </div>
+      </div>
+    </section>
+    {{else}}
+    {{getExistingLegacy}}
+    <section class="flush-with-above height-80 d-block">
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="general" role="tabpanel">
+          <div class="container">
+            <div class="row mb-4">
+              <div class="col">
+                <h5>Save your digital will</h5>
+                <span>
+                  Save your digital assets, content, notes, or any other important information to the XRP blockchain.
+                  Only your trusted beneficiaries will be able to view it in cooperation.
+                </span>
+                {{#if legacy.legacyTxId}}
+                <p class="mt-2">
+                  Your latest will was saved on XRP with the transaction hash:
+                  <a href="{{getBlockExplorerTxLink legacy.legacyTxId}}" target="_blank">
+                    {{legacy.legacyTxId}}
+                  </a>
+                </p>
+                {{/if}}
+              </div>
+              <!--end of col-->
+            </div>
+            <!--end of row-->
+            <div class="row">
+              <div class="col-12 col-md-4 order-md-2">
+                {{> walletCard}}
+              </div>
+              <!--end of col-->
+              <div class="col-12 col-md-8 order-md-1">
+                <form class="legacy">
+                  <textarea rows="6" maxlength="30" class="form-control mb-3" placeholder="Your digital will..." id="digital-legacy"
+                    required></textarea>
+
+                  <input type="submit" class="btn btn-lg btn-primary save-will" value="Save on XRP" />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {{/unless}}
+    {{/unless}}
+    {{> footer}}
+  </div>
+</template>

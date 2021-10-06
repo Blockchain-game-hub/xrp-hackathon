@@ -1,0 +1,1 @@
+TrustedUsers = new Mongo.Collection('trustedUsers');

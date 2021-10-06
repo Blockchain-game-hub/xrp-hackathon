@@ -1,0 +1,123 @@
+<template name="recovery">
+  {{> sAlert}}
+  {{> navbar}}
+  <div class="main-container">
+    <section class="bg-white space-sm pb-4">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-auto">
+            <h1 class="h2">Welcome, {{getEmail}}</h1>
+            <p>
+              Continue to recover the will of {{getLegacyOwnerEmail}}.
+            </p>
+          </div>
+          <!--end of col-->
+          <div class="col-auto text-right">
+            <a href="{{pathFor 'dashboard'}}" class="btn btn-lg btn-info">
+              Back to Dashboard
+            </a>
+          </div>
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+    <!--end of section-->
+    {{#unless legacy.hasRecovered}}
+    <section class="height-70">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-12 col-lg-8">
+            <div class="card card-lg text-center">
+              <div class="card-body">
+                <i class="icon-add-to-list display-4 opacity-20"></i>
+                <h1 class="h5">Begin the will recovery process</h1>
+                <p>
+                  You can begin the will recovery process. Once two trusted members have started this process, the
+                  will will be revealed to you here.
+                </p>
+                {{#unless begunLegacyActivation}}
+                <a href="#" class="btn btn-lg btn-primary mb-2 begin-recovery">Recover Will</a>
+                {{else}}
+                <a href="#" class="btn btn-lg btn-secondary mb-2" disabled>Awaiting recovery from other trusted
+                  members...</a>
+                {{/unless}}
+                <br />
+                <small>
+                  This is irreversible.
+                </small>
+              </div>
+            </div>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+    {{else}}
+    <section class="flush-with-above height-80 d-block">
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="general" role="tabpanel">
+          <div class="container">
+            <div class="row mb-4">
+              <div class="col">
+                <h5>Recovered Digital Will</h5>
+                <span>
+                  This is the digital will saved on the XRP blockchain.
+                </span>
+              </div>
+              <!--end of col-->
+            </div>
+            <!--end of row-->
+            <div class="row">
+              <div class="col-12 col-md-4 order-md-2">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Will Data</h4>
+                    {{#if legacy.legacyTxId}}
+                    <p class="card-text">
+                      This will was saved on XRP with the transaction ID:
+                      <a href="{{getBlockExplorerTxLink legacy.legacyTxId}}"
+                        target="_blank">
+                        {{legacy.legacyTxId}}
+                      </a>
+                    </p>
+                    {{#if legacy.recoveryTxId}}
+                    <p class="card-text">
+                      This will's execution has been recorded on XRP with the transaction ID:
+                      <a href="#" class="view-recovery-data" target="_blank">
+                        {{legacy.recoveryTxId}}
+                      </a>
+                    </p>
+                    {{#if viewRecoveryData}}
+                    <textarea class="form-control" readonly rows="6">{{viewRecoveryData}}</textarea>
+                    <br />
+                    <small>
+                      <a href="{{getBlockExplorerTxLink legacy.recoveryTxId}}" target="_blank">
+                        View proof of recovery on block explorer
+                      </a>
+                    </small>
+                    {{/if}}
+                    {{/if}}
+                    {{/if}}
+                  </div>
+                </div>
+                {{> walletCard}}
+              </div>
+              <!--end of col-->
+              <div class="col-12 col-md-8 order-md-1">
+                <textarea rows="6" class="form-control mb-3" placeholder="Your digital legacy..." id="digital-legacy"
+                  readonly>{{recoverLegacy}}</textarea>
+
+                <h5>Your Distribution from this Will</h5>
+                {{getLegacyOwnerEmail}} placed you as a beneficiary of his will. 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {{/unless}}
+  </div>
+</template>

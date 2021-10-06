@@ -1,0 +1,30 @@
+<template name="walletCard">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Your wallet address</h4>
+      <p class="card-text">
+        Load up your XRP wallet.
+        <br />
+        <br />
+        Your address:
+        <br />
+        <input type="text" class="form-control mt-2" value="{{user.profile.wallet.xAddress}}" readonly />
+        <br />
+        <!-- Your COW token(s):
+        <br />
+        <input type="text" class="form-control mt-2" value="{{getCowTokenBalance}}" readonly /> -->
+      </p>
+      <a href="#" class="btn btn-secondary btn-block refresh-balance">
+        Balance: {{getWalletBalance}}
+      </a>
+      <br />
+      <center>
+        <small>
+          <a href="{{getBlockExplorerAddressLink user.profile.wallet.xAddress}}" target="_blank">
+            View on block explorer
+          </a>
+        </small>
+      </center>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,17 @@
+{
+  "name": "webapp",
+  "private": true,
+  "scripts": {
+    "start": "meteor run --settings settings.json"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "aes-js": "^3.1.2",
+    "jquery": "^3.5.1",
+    "md5": "^2.3.0",
+    "meteor-node-stubs": "^1.0.1",
+    "pbkdf2": "^3.1.1",
+    "ripple-lib": "^1.10.0",
+    "rxjs": "^6.6.6"
+  }
+}
